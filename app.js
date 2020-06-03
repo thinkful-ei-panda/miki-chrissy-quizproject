@@ -49,6 +49,34 @@ const STORE = {
 
 /********** TEMPLATE GENERATION FUNCTIONS **********/
 
+/*
+ <div class="wrapper">
+      <div class="group">
+        <div class="item">
+          <p>Question</p>
+        </div>
+        <div class="item">
+          <form>
+            <input type="radio" id="male" name="gender" value="male">
+            <label for="male">Male</label>
+            <input type="radio" id="female" name="gender" value="female">
+            <label for="female">Female</label>
+            <input type="radio" id="other" name="gender" value="other">
+            <label for="other">Other</label>
+            <input type="radio" id="other" name="gender" value="other">
+            <label for="other">Other</label>
+            <button type="submit">Button</button>
+          </form>
+        </div>
+        <div class="item">
+          <button><span>Start Mission</span></button>
+          <button><span>Abort Mission</span></button>
+        </div>
+      </div>
+    </div>
+*/
+
+
 // These functions return HTML templates
 
 /********** RENDER FUNCTION(S) **********/
