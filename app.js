@@ -27,7 +27,7 @@ const STORE = {
       correctAnswer: '2019'
     }
   ],
-  quizStarted: true,
+  quizStarted: false,
   questionNumber: 0,
   score: 0
 };
@@ -54,13 +54,13 @@ function someFunction(item) {
   console.log('someFunction ran!');
   if (item.quizStarted === false) {
     console.log('I returned start!')
-    renderStartPage();
-  } else if (item.quizStarted === true) {
+    return renderStartPage();
+  } else if (item.quizStarted === true && item.questionNumber < 6) {
     console.log('I returned question!')
-    renderQuestionPage();
-  } else if (item.quizEnded === true) {
+    return renderQuestionPage();
+  } else { 
     console.log('I returned end!')
-    renderEndPage();
+    return renderEndPage();
   }
 }
 
@@ -76,7 +76,7 @@ function renderStartPage() {
           <p>Welcome message</p>
         </div>
         <div class="item">
-          <button><span>Start Mission</span></button>
+          <button class="start">Start Mission</button>
         </div>
       </div>
     </div>`;
@@ -123,20 +123,12 @@ function renderEndPage() {
           <p>Welcome message</p>
         </div>
         <div class="item">
-          <button><span>Start Mission</span></button>
+          <button class="start"<span>Beat IT</span></button>
         </div>
       </div>
     </div>`;
 }
 
-function renderQuestion() {
-  console.log('Render question ran!');
-  const mainVari = someFunction(STORE); //someFunction stands in for the template generator
-  $('main').html(mainVari)
-}
-
-  
-  
 //   if (item.quizStarted = false) {
 //     return `
 //     <div class="wrapper">
@@ -218,9 +210,25 @@ function renderQuestion() {
 
 // This function conditionally replaces the contents of the <main> tag based on the state of the store
 
+function renderQuestion() {
+  console.log('Render question ran!');
+  const MAINVARI = someFunction(STORE); //someFunction stands in for the template generator
+  $('main').html(MAINVARI);
+}
+
 /********** EVENT HANDLER FUNCTIONS **********/
 
 // These functions handle events (submit, click, etc)
+
+function clickEvent() {
+  console.log('clickEvent ran!')
+  $('button.start').click(event => {
+    STORE.quizStarted = true;
+    STORE.questionNumber += 1;
+    renderQuestion()
+    console.log($(event.target));
+  })   
+}
 
 
 /* PSEUDO CODING */
@@ -229,4 +237,9 @@ function renderQuestion() {
 // Start page is the default stage, basic welcome message and start button. Listening for one event, onClick for the StartMission button, which moves to question 1.
 // Question page, listening for a onSubmit button which moves to the next question and records answer, checking against correct answer, to update score.
 
-$(renderQuestion);
+function quizApp() {
+  renderQuestion();
+  clickEvent();
+}
+
+$(quizApp);
