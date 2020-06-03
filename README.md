@@ -1,2 +1,1 @@
-# miki-chrissy-quizproject
-Boiler plate :)
+### Boilerplate app structure for Quiz App project
