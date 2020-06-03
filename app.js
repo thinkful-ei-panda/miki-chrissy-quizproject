@@ -27,7 +27,7 @@ const STORE = {
       correctAnswer: '2019'
     }
   ],
-  quizStarted: false,
+  quizStarted: true,
   questionNumber: 0,
   score: 0
 };
@@ -48,6 +48,141 @@ const STORE = {
  */
 
 /********** TEMPLATE GENERATION FUNCTIONS **********/
+
+
+function someFunction(item) {
+  console.log('someFunction ran!');
+  if (item.quizStarted === false) {
+    console.log('I returned start!')
+    renderStartPage();
+  } else if (item.quizStarted === true) {
+    console.log('I returned question!')
+    renderQuestionPage();
+  } else if (item.quizEnded === true) {
+    console.log('I returned end!')
+    renderEndPage();
+  }
+}
+
+function renderStartPage() {
+  console.log('renderStartPage ran!');
+  return `
+    <div class="wrapper">
+      <div class="group">
+        <div class="item">
+          <p></p>
+        </div>
+        <div class="item">
+          <p>Welcome message</p>
+        </div>
+        <div class="item">
+          <button><span>Start Mission</span></button>
+        </div>
+      </div>
+    </div>`;
+}
+
+function renderQuestionPage() {
+  console.log('renderQuestionPage ran!')
+  return `
+    <div class="wrapper">
+      <div class="group">
+        <div class="item">
+          <p>Question</p>
+        </div>
+         <div class="item">
+          <form>
+            <input type="radio" id="male" name="gender" value="male">
+              <label for="male">Male</label>
+              <input type="radio" id="female" name="gender" value="female">
+              <label for="female">Female</label>
+              <input type="radio" id="other" name="gender" value="other">
+              <label for="other">Other</label>
+              <input type="radio" id="other" name="gender" value="other">
+              <label for="other">Other</label>
+              <button type="submit">Button</button>
+          </form>
+        </div>
+        <div class="item">
+          <button><span>Start New Quiz</span></button>
+          <button><span>Stop here! See my score</span></button>
+        </div>
+      </div>
+    </div>`;
+}
+
+function renderEndPage() {
+  console.log('renderEndPage ran!')
+  return `
+    <div class="wrapper">
+      <div class="group">
+        <div class="item">
+          <p></p>
+        </div>
+        <div class="item">
+          <p>Welcome message</p>
+        </div>
+        <div class="item">
+          <button><span>Start Mission</span></button>
+        </div>
+      </div>
+    </div>`;
+}
+
+function renderQuestion() {
+  console.log('Render question ran!');
+  const mainVari = someFunction(STORE); //someFunction stands in for the template generator
+  $('main').html(mainVari)
+}
+
+  
+  
+//   if (item.quizStarted = false) {
+//     return `
+//     <div class="wrapper">
+//       <div class="group">
+//         <div class="item">
+//           <p></p>
+//         </div>
+//         <div class="item">
+//           <p>Welcome message</p>
+//         </div>
+//         <div class="item">
+//           <button><span>Start Mission</span></button>
+//         </div>
+//       </div>
+//     </div>`;
+//   } else if {
+//     (item.quizStarted !== false) {
+//       return `
+//       <div class="wrapper">
+//         <div class="group">
+//           <div class="item">
+//             <p>Question</p>
+//           </div>
+//           <div class="item">
+//             <form>
+//               <input type="radio" id="male" name="gender" value="male">
+//               <label for="male">Male</label>
+//               <input type="radio" id="female" name="gender" value="female">
+//               <label for="female">Female</label>
+//               <input type="radio" id="other" name="gender" value="other">
+//               <label for="other">Other</label>
+//               <input type="radio" id="other" name="gender" value="other">
+//               <label for="other">Other</label>
+//               <button type="submit">Button</button>
+//             </form>
+//           </div>
+//           <div class="item">
+//             <button><span>Start New Quiz</span></button>
+//             <button><span>Stop here! See my score</span></button>
+//           </div>
+//         </div>
+//       </div>`;
+//     }
+//   }
+// }
+
 
 /*
  <div class="wrapper">
@@ -86,3 +221,12 @@ const STORE = {
 /********** EVENT HANDLER FUNCTIONS **********/
 
 // These functions handle events (submit, click, etc)
+
+
+/* PSEUDO CODING */
+
+// // Rendering -- 
+// Start page is the default stage, basic welcome message and start button. Listening for one event, onClick for the StartMission button, which moves to question 1.
+// Question page, listening for a onSubmit button which moves to the next question and records answer, checking against correct answer, to update score.
+
+$(renderQuestion);
