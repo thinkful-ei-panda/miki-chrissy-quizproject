@@ -6,3 +6,78 @@
   * https://github.com/andreacardybailey/responsive_example/blob/master/styles/responsive-base.css 
   *
 */
+
+.wrapper {
+  width: 90%;
+  margin: auto;
+  border: 0.5px solid black;
+}
+
+.group {
+  display: flex;
+  flex-direction: column;
+  border: 0.5px solid black;
+}
+
+.item {
+  flex: 1;
+  border: 0.5px solid black;
+}
+
+.item-double {
+  flex: 2;
+  border: 0.5px solid black;
+}
+
+.item-start {
+  align-self: flex-start;
+}
+
+.item-end {
+  align-self: flex-end;
+  margin: 0 10px 0 0;
+}
+
+.center {
+  text-align: center;
+}
+
+.padding {
+  padding: 10px;
+}
+
+.no-margin {
+  margin: 0;
+}
+
+.no-padding-bottom {
+  padding: 10px 10px 2px 10px;
+}
+
+h1, p {
+  margin: 0;
+}
+
+.footer-padding {
+  padding: 10px;
+}
+
+@media all and (min-width: 1200px) {
+  
+  .wrapper {
+    width: 50%;
+  }
+
+  .padding {
+    padding: 50px;
+  }
+
+  .no-padding-bottom {
+    padding: 50px 50px 10px 50px;
+  }
+
+  .footer-padding {
+    padding: 20px;
+  }
+
+}
