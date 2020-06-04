@@ -29,7 +29,17 @@ const STORE = {
       correctAnswer: '2019'
     }
   ],
+  // feedbacks: [
+  //   {
+  //     feedback: 'Question 1 feedback'
+  //   },
+  //   {
+  //     feedback: 'Question 2 feedback'
+  //   },
+  // ],
+  feedback: '',
   quizStarted: false,
+  questionCompleted: false,
   questionNumber: 0,
   score: 0
 };
@@ -94,32 +104,35 @@ function generateQuestionPage() {
         <h3 class="center">${STORE.questions[STORE.questionNumber-1].question}</h3>
         <form class="padding">
           <div>
-            <input type="radio" id="1" name="answer" value="${STORE.questions[STORE.questionNumber-1].answers[STORE.questionNumber-1]}" required>
-            <label for="1">${STORE.questions[STORE.questionNumber-1].answers[STORE.questionNumber-1]}</label>
+            <input type="radio" id="1" name="answer" value="${STORE.questions[STORE.questionNumber-1].answers[0]}" required>
+            <label for="1">${STORE.questions[STORE.questionNumber-1].answers[0]}</label>
           </div>
           <div>
-            <input type="radio" id="2" name="answer" value="${STORE.questions[STORE.questionNumber-1].answers[STORE.questionNumber]}">
-            <label for="2">${STORE.questions[STORE.questionNumber-1].answers[STORE.questionNumber]}</label>
+            <input type="radio" id="2" name="answer" value="${STORE.questions[STORE.questionNumber-1].answers[1]}">
+            <label for="2">${STORE.questions[STORE.questionNumber-1].answers[1]}</label>
             </div>
           <div>
-            <input type="radio" id="3" name="answer" value="${STORE.questions[STORE.questionNumber-1].answers[STORE.questionNumber+1]}">
-            <label for="3">${STORE.questions[STORE.questionNumber-1].answers[STORE.questionNumber+1]}</label>
+            <input type="radio" id="3" name="answer" value="${STORE.questions[STORE.questionNumber-1].answers[2]}">
+            <label for="3">${STORE.questions[STORE.questionNumber-1].answers[2]}</label>
           </div>
           <div>
-            <input type="radio" id="4" name="answer" value="${STORE.questions[STORE.questionNumber-1].answers[STORE.questionNumber+2]}">
-            <label for="4">${STORE.questions[STORE.questionNumber-1].answers[STORE.questionNumber+2]}</label>
+            <input type="radio" id="4" name="answer" value="${STORE.questions[STORE.questionNumber-1].answers[3]}">
+            <label for="4">${STORE.questions[STORE.questionNumber-1].answers[3]}</label>
           </div>
           <div>
-            <button type="submit">Check your answer!</button>
+            ${STORE.questionCompleted ? "" : '<button type="submit">Check your answer!</button>'}
           </div>
         </form>
       </article>
-      <div class="item-double padding">
-        <p class="center feedback">Feedback</p>
+      <div class="center item-double padding">
+        <p class="feedback">${STORE.feedback}</p>
+        ${STORE.questionCompleted ? '<button class="js-nextQuestion">Next question!</button>' : ""}
       </div>
     </section>
   </div>`;
 }
+
+
 
 function generateEndPage() {
   console.log('generateEndPage ran!')
@@ -158,6 +171,7 @@ function goToNextPage() {
   $('button.js-next-page').click(event => {
     STORE.quizStarted = true;
     STORE.questionNumber += 1;
+    STORE.previousScore = STORE.currentScore;
     renderQuizApp();
   });   
 }
@@ -167,21 +181,44 @@ function submitUserAnswer() {
     event.preventDefault();
     console.log('submitAnswer ran!')
     const USERANSWER = $(':checked').val();
-    const FEEDBACK = checkUserAnswer(USERANSWER);
+    checkUserAnswer(USERANSWER);
     renderQuizApp();
   });
 }
 
 function checkUserAnswer(userAnswer) {
   console.log('checkUserAnswer ran!');
-  if (userAnswer == STORE.questions[STORE.questionNumber-1].correctAnswer) {
+  if (userAnswer === STORE.questions[STORE.questionNumber-1].correctAnswer) {
     STORE.score += 1;
-    return 'Congrats, you got it!';
+    STORE.feedback = STORE.questions[STORE.questionNumber-1].correct;
+    STORE.questionCompleted = true;
   } else {
-    return 'Try again!';
+    STORE.feedback = STORE.questions[STORE.questionNumber-1].incorrect;
+    STORE.questionCompleted = true;
   }
 }
 
+function nextQuestion() {
+  console.log('nextQuestion ran!');
+  $('main').on('click', '.js-nextQuestion', event => {
+    STORE.feedback = '';
+    STORE.questionCompleted = false;
+    STORE.questionNumber += 1;
+    renderQuizApp();
+  });
+}
+
+function resetQuiz() {
+  console.log('resetQuiz ran!');
+  $('main').on('click', '.js-restart', event => {
+    STORE.feedback = '';
+    STORE.questionCompleted = false;
+    STORE.quizStarted = false;
+    STORE.questionNumber = 0;
+    STORE.score = 0
+    renderQuizApp();
+  });
+}
 /* PSEUDO CODING */
 
 // // Rendering -- 
@@ -192,6 +229,8 @@ function quizAppFunctions() {
   renderQuizApp();
   goToNextPage();
   submitUserAnswer();
+  nextQuestion();
+  resetQuiz();
 }
 
 $(quizAppFunctions);
