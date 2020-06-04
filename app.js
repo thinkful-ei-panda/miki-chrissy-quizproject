@@ -29,8 +29,10 @@ const STORE = {
       correctAnswer: '2019'
     }
   ],
-  quizStarted: false,
+  feedback: "",
+  questionCompleted: false,
   questionNumber: 0,
+  quizStarted: false,
   score: 0
 };
 
@@ -94,28 +96,29 @@ function generateQuestionPage() {
         <h3 class="center">${STORE.questions[STORE.questionNumber-1].question}</h3>
         <form class="padding">
           <div>
-            <input type="radio" id="1" name="answer" value="${STORE.questions[STORE.questionNumber-1].answers[STORE.questionNumber-1]}" required>
-            <label for="1">${STORE.questions[STORE.questionNumber-1].answers[STORE.questionNumber-1]}</label>
+            <input type="radio" id="1" name="answer" value="${STORE.questions[STORE.questionNumber-1].answers[0]}" required>
+            <label for="1">${STORE.questions[STORE.questionNumber-1].answers[0]}</label>
           </div>
           <div>
-            <input type="radio" id="2" name="answer" value="${STORE.questions[STORE.questionNumber-1].answers[STORE.questionNumber]}">
-            <label for="2">${STORE.questions[STORE.questionNumber-1].answers[STORE.questionNumber]}</label>
+            <input type="radio" id="2" name="answer" value="${STORE.questions[STORE.questionNumber-1].answers[1]}">
+            <label for="2">${STORE.questions[STORE.questionNumber-1].answers[1]}</label>
             </div>
           <div>
-            <input type="radio" id="3" name="answer" value="${STORE.questions[STORE.questionNumber-1].answers[STORE.questionNumber+1]}">
-            <label for="3">${STORE.questions[STORE.questionNumber-1].answers[STORE.questionNumber+1]}</label>
+            <input type="radio" id="3" name="answer" value="${STORE.questions[STORE.questionNumber-1].answers[2]}">
+            <label for="3">${STORE.questions[STORE.questionNumber-1].answers[2]}</label>
           </div>
           <div>
-            <input type="radio" id="4" name="answer" value="${STORE.questions[STORE.questionNumber-1].answers[STORE.questionNumber+2]}">
-            <label for="4">${STORE.questions[STORE.questionNumber-1].answers[STORE.questionNumber+2]}</label>
+            <input type="radio" id="4" name="answer" value="${STORE.questions[STORE.questionNumber-1].answers[3]}">
+            <label for="4">${STORE.questions[STORE.questionNumber-1].answers[3]}</label>
           </div>
           <div>
-            <button type="submit">Check your answer!</button>
+            ${STORE.questionCompleted? "" : '<button type="submit">Check your answer!</button>'}
           </div>
         </form>
       </article>
-      <div class="item-double padding">
-        <p class="center feedback">Feedback</p>
+      <div class="center item-double padding">
+        <p class="feedback">${STORE.feedback}</p>
+        ${STORE.questionCompleted ? '<button class="js-next-question">Next</button>' : "" }
       </div>
     </section>
   </div>`;
@@ -176,10 +179,34 @@ function checkUserAnswer(userAnswer) {
   console.log('checkUserAnswer ran!');
   if (userAnswer == STORE.questions[STORE.questionNumber-1].correctAnswer) {
     STORE.score += 1;
-    return 'Congrats, you got it!';
+    STORE.feedback = STORE.questions[STORE.questionNumber-1].correct;
+    STORE.questionCompleted = true;
   } else {
-    return 'Try again!';
+    STORE.feedback = STORE.questions[STORE.questionNumber-1].incorrect;
+    STORE.questionCompleted = true;
   }
+}
+
+function goToNextQuestion() {
+  console.log('goToNextQuestion ran!')
+  $('main').on('click', '.js-next-question', event => {
+    STORE.feedback = "";
+    STORE.questionCompleted = false;
+    STORE.questionNumber += 1;
+    renderQuizApp();
+  });   
+}
+
+function resetQuiz() {
+  console.log('goToStartPage ran!')
+  $('main').on('click', '.js-restart', event => {
+    STORE.feedback = "";
+    STORE.questionCompleted = false;
+    STORE.questionNumber = 0;
+    STORE.quizStarted = false;
+    STORE.score = 0;
+    renderQuizApp();
+  });  
 }
 
 /* PSEUDO CODING */
@@ -192,6 +219,8 @@ function quizAppFunctions() {
   renderQuizApp();
   goToNextPage();
   submitUserAnswer();
+  goToNextQuestion();
+  resetQuiz();
 }
 
 $(quizAppFunctions);
