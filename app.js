@@ -15,8 +15,8 @@ const STORE = {
         'green'
       ],
       imageAttributes: [
-        "images/ja-mai-tai.jpg",
-        "Ja-Mai-Tai"
+        "images/archer_bloody_mary.jpg",
+        "blah"
       ],
       correctAnswer: 'green',
       correct: 'You are absolutely right!',
@@ -30,6 +30,10 @@ const STORE = {
         '2019',
         '2005'
       ],
+      imageAttributes: [
+        "images/",
+        "blah"
+      ],
       correctAnswer: '2019'
     }
   ],
@@ -37,7 +41,6 @@ const STORE = {
   quizStarted: false,
   questionCompleted: false,
   questionNumber: 0,
-  quizStarted: false,
   score: 0
 };
 
@@ -76,17 +79,16 @@ function generateStartPage() {
   console.log('generateStartPage ran!');
   return `
   <div class="wrapper">
-  <section class="group">
+  <div class="group">
     <img class=center src="images/clean-cocktail-lineup.jpg" alt="A colorful row of cocktails.">
-    <h2 class="center">Image Placeholder</h2>
     <div class="item-double padding">
       <h3 class="center">h3: Welcome</h3>
-      <p>p: Teeeeeeeeeext</p>
+      <p>p: Text</p>
     </div>
     <div class="item-double center padding">
       <button class="js-next-page">Next</button>
     </div>
-  </section>
+  </div>
 </div>`;
 }
 
@@ -100,7 +102,7 @@ function generateQuestionPage() {
       <article class="item-double">
         <p class="center"><img src=${STORE.questions[STORE.questionNumber-1].imageAttributes[0]} alt=${STORE.questions[STORE.questionNumber-1].imageAttributes[1]}></p>
         <h3 class="center">${STORE.questions[STORE.questionNumber-1].question}</h3>
-        <form class="padding">
+        <form class="padding item-start">
           <div>
             <input type="radio" id="1" name="answer" value="${STORE.questions[STORE.questionNumber-1].answers[0]}" required>
             <label for="1">${STORE.questions[STORE.questionNumber-1].answers[0]}</label>
@@ -124,6 +126,7 @@ function generateQuestionPage() {
       </article>
       <div class="center item-double padding">
         <p class="feedback">${STORE.feedback}</p>
+        ${STORE.questionCompleted ? '<button class="js-next-question">Next question!</button>' : ""}
       </div>
     </section>
   </div>`;
@@ -164,8 +167,8 @@ function renderQuizApp() {
 // These functions handle events (submit, click, etc)
 
 function goToNextPage() {
-  console.log('goToNextPage ran!')
-  $('button.js-next-page').click(event => {
+  console.log('goToNextPage ran!');
+  $('main').on('click', '.js-next-page', event => {
     STORE.quizStarted = true;
     STORE.questionNumber += 1;
     STORE.previousScore = STORE.currentScore;

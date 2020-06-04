@@ -10,8 +10,6 @@
 
 @import url('https://fonts.googleapis.com/css?family=Proxima+Nova');
 
-
-
 .wrapper {
   width: 90%;
   margin: auto;
@@ -49,7 +47,7 @@
 }
 
 .padding {
-  padding: 10px;
+  padding: 5px;
 }
 
 .no-margin {
@@ -71,13 +69,22 @@ h1, p {
   margin: 0;
 }
 
-.footer-padding {
-  padding: 10px;
+button {
+  margin: 15px 0 15px 0;
+}
+
+[name="answer"] {
+  margin: 10px 0 10px 0;
 }
 
 img {
   margin: auto;
-  width: 80%;
+  height: 100%;
+  width: 100%;
+}
+
+.footer-padding {
+  padding: 10px;
 }
 
 @media all and (min-width: 1200px) {
@@ -87,11 +94,17 @@ img {
   }
 
   .padding {
-    padding: 50px;
+    padding: 10px 50px 10px 50px;
   }
 
   .no-padding-bottom {
     padding: 50px 50px 10px 50px;
+  }
+
+  img {
+    margin: auto;
+    height: 300px;
+    width: 50%;
   }
 
   .footer-padding {
