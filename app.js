@@ -29,7 +29,8 @@ const STORE = {
       correctAnswer: '2019'
     }
   ],
-  feedback: "",
+  feedback: '',
+  quizStarted: false,
   questionCompleted: false,
   questionNumber: 0,
   quizStarted: false,
@@ -112,17 +113,19 @@ function generateQuestionPage() {
             <label for="4">${STORE.questions[STORE.questionNumber-1].answers[3]}</label>
           </div>
           <div>
-            ${STORE.questionCompleted? "" : '<button type="submit">Check your answer!</button>'}
+            ${STORE.questionCompleted ? "" : '<button type="submit">Check your answer!</button>'}
           </div>
         </form>
       </article>
       <div class="center item-double padding">
         <p class="feedback">${STORE.feedback}</p>
-        ${STORE.questionCompleted ? '<button class="js-next-question">Next</button>' : "" }
+        ${STORE.questionCompleted ? '<button class="js-next-question">Next question!</button>' : ""}
       </div>
     </section>
   </div>`;
 }
+
+
 
 function generateEndPage() {
   console.log('generateEndPage ran!')
@@ -135,7 +138,7 @@ function generateEndPage() {
       <h3 class="center">h3: Goodbye</h3>
       <p>p: Thaaaaaaaaaanks</p>
     </div>
-    <div class="item-double padding">
+    <div class="center item-double padding">
       <button class="js-restart">Take quiz again!</button>
     </div>
   </section>
@@ -161,6 +164,7 @@ function goToNextPage() {
   $('button.js-next-page').click(event => {
     STORE.quizStarted = true;
     STORE.questionNumber += 1;
+    STORE.previousScore = STORE.currentScore;
     renderQuizApp();
   });   
 }
@@ -170,14 +174,14 @@ function submitUserAnswer() {
     event.preventDefault();
     console.log('submitAnswer ran!')
     const USERANSWER = $(':checked').val();
-    const FEEDBACK = checkUserAnswer(USERANSWER);
+    checkUserAnswer(USERANSWER);
     renderQuizApp();
   });
 }
 
 function checkUserAnswer(userAnswer) {
   console.log('checkUserAnswer ran!');
-  if (userAnswer == STORE.questions[STORE.questionNumber-1].correctAnswer) {
+  if (userAnswer === STORE.questions[STORE.questionNumber-1].correctAnswer) {
     STORE.score += 1;
     STORE.feedback = STORE.questions[STORE.questionNumber-1].correct;
     STORE.questionCompleted = true;
@@ -208,7 +212,6 @@ function resetQuiz() {
     renderQuizApp();
   });  
 }
-
 /* PSEUDO CODING */
 
 // // Rendering -- 
