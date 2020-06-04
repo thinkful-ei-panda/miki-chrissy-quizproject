@@ -14,6 +14,10 @@ const STORE = {
         'pink',
         'green'
       ],
+      imageAttributes: [
+        "images/ja-mai-tai.jpg",
+        "Ja-Mai-Tai"
+      ],
       correctAnswer: 'green',
       correct: 'You are absolutely right!',
       incorrect: 'Ooops!'
@@ -94,6 +98,7 @@ function generateQuestionPage() {
       <h2 class="item-end">Question Number: ${STORE.questionNumber} of 5</h2>
       <p class="item-end">Current Score: ${STORE.score} of 5</p>
       <article class="item-double">
+        <p class="center"><img src=${STORE.questions[STORE.questionNumber-1].imageAttributes[0]} alt=${STORE.questions[STORE.questionNumber-1].imageAttributes[1]}></p>
         <h3 class="center">${STORE.questions[STORE.questionNumber-1].question}</h3>
         <form class="padding">
           <div>
@@ -119,7 +124,6 @@ function generateQuestionPage() {
       </article>
       <div class="center item-double padding">
         <p class="feedback">${STORE.feedback}</p>
-        ${STORE.questionCompleted ? '<button class="js-next-question">Next question!</button>' : ""}
       </div>
     </section>
   </div>`;
