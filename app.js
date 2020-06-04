@@ -80,8 +80,8 @@ function generateStartPage() {
   return `
   <div class="wrapper">
   <section class="group">
-    <h2 class="item-end">h2: Some Text</h2>
-    <p class="item-end">p: Some Text</p>
+    <img class=center src="images/clean-cocktail-lineup.jpg" alt="A colorful row of cocktails.">
+    <h2 class="center">Image Placeholder</h2>
     <div class="item-double padding">
       <h3 class="center">h3: Welcome</h3>
       <p>p: Teeeeeeeeeext</p>
