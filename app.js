@@ -29,18 +29,11 @@ const STORE = {
       correctAnswer: '2019'
     }
   ],
-  // feedbacks: [
-  //   {
-  //     feedback: 'Question 1 feedback'
-  //   },
-  //   {
-  //     feedback: 'Question 2 feedback'
-  //   },
-  // ],
   feedback: '',
   quizStarted: false,
   questionCompleted: false,
   questionNumber: 0,
+  quizStarted: false,
   score: 0
 };
 
@@ -126,7 +119,7 @@ function generateQuestionPage() {
       </article>
       <div class="center item-double padding">
         <p class="feedback">${STORE.feedback}</p>
-        ${STORE.questionCompleted ? '<button class="js-nextQuestion">Next question!</button>' : ""}
+        ${STORE.questionCompleted ? '<button class="js-next-question">Next question!</button>' : ""}
       </div>
     </section>
   </div>`;
@@ -145,7 +138,7 @@ function generateEndPage() {
       <h3 class="center">h3: Goodbye</h3>
       <p>p: Thaaaaaaaaaanks</p>
     </div>
-    <div class="item-double padding">
+    <div class="center item-double padding">
       <button class="js-restart">Take quiz again!</button>
     </div>
   </section>
@@ -198,26 +191,26 @@ function checkUserAnswer(userAnswer) {
   }
 }
 
-function nextQuestion() {
-  console.log('nextQuestion ran!');
-  $('main').on('click', '.js-nextQuestion', event => {
-    STORE.feedback = '';
+function goToNextQuestion() {
+  console.log('goToNextQuestion ran!')
+  $('main').on('click', '.js-next-question', event => {
+    STORE.feedback = "";
     STORE.questionCompleted = false;
     STORE.questionNumber += 1;
     renderQuizApp();
-  });
+  });   
 }
 
 function resetQuiz() {
-  console.log('resetQuiz ran!');
+  console.log('goToStartPage ran!')
   $('main').on('click', '.js-restart', event => {
-    STORE.feedback = '';
+    STORE.feedback = "";
     STORE.questionCompleted = false;
-    STORE.quizStarted = false;
     STORE.questionNumber = 0;
-    STORE.score = 0
+    STORE.quizStarted = false;
+    STORE.score = 0;
     renderQuizApp();
-  });
+  });  
 }
 /* PSEUDO CODING */
 
@@ -229,7 +222,7 @@ function quizAppFunctions() {
   renderQuizApp();
   goToNextPage();
   submitUserAnswer();
-  nextQuestion();
+  goToNextQuestion();
   resetQuiz();
 }
 
