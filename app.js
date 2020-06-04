@@ -14,7 +14,9 @@ const STORE = {
         'pink',
         'green'
       ],
-      correctAnswer: 'green'
+      correctAnswer: 'green',
+      correct: 'You are absolutely right!',
+      incorrect: 'Ooops!'
     },
     {
       question: 'What is the current year?',
@@ -166,7 +168,6 @@ function submitUserAnswer() {
     console.log('submitAnswer ran!')
     const USERANSWER = $(':checked').val();
     const FEEDBACK = checkUserAnswer(USERANSWER);
-    showFeedback(FEEDBACK);
     renderQuizApp();
   });
 }
@@ -174,6 +175,7 @@ function submitUserAnswer() {
 function checkUserAnswer(userAnswer) {
   console.log('checkUserAnswer ran!');
   if (userAnswer == STORE.questions[STORE.questionNumber-1].correctAnswer) {
+    STORE.score += 1;
     return 'Congrats, you got it!';
   } else {
     return 'Try again!';
