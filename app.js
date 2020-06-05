@@ -192,8 +192,8 @@ function generateEndPage() {
     <h2 class="item-end">h2: Some Text</h2>
     <p class="item-end">p: Some Text</p>
     <div class="item-double padding">
-      <h3 class="center">h3: Goodbye</h3>
-      <p>p: Thaaaaaaaaaanks</p>
+      <h3 class="center">You scored ${STORE.score} out of ${STORE.questions.length}!</h3>
+      <p>${STORE.score == STORE.questions.length ? "Nice!" : "Better luck next time!"}</p>
     </div>
     <div class="center item-double padding">
       <button class="js-restart">Take quiz again!</button>
