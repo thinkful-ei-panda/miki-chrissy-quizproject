@@ -7,35 +7,85 @@ const STORE = {
   // 5 or more questions are required
   questions: [
     {
-      question: 'What color is broccoli?',
+      question: 'What is Archer\'s drink of choice?',
       answers: [
-        'red',
-        'orange',
-        'pink',
-        'green'
+        'Cosmopolitan',
+        'Manhattan',
+        'Bloody Mary',
+        'Negroni'
       ],
       imageAttributes: [
         "images/archer_bloody_mary.jpg",
-        "blah"
+        "Archer's Bloody Mary'"
       ],
-      correctAnswer: 'green',
-      correct: 'You are absolutely right!',
-      incorrect: 'Ooops!'
+      correctAnswer: 'Bloody Mary',
+      correct: 'Yup, and the cumulative hangover will kill him.',
+      incorrect: 'Not quite! Archer lives on Bloody Marys.'
     },
     {
-      question: 'What is the current year?',
+      question: 'What is the key ingredient in a Sex on the Beach?',
       answers: [
-        '1970',
-        '2015',
-        '2019',
-        '2005'
+        'Cherry Grenadine',
+        'Peach Schnapps',
+        'Rum',
+        'Sweet Vermouth'
+      ],
+      imageAttributes: [
+        "images/sex-on-the-beach.jpg",
+        "Sex on the Beach"
+      ],
+      correctAnswer: 'Peach Schnapps',
+      correct: 'You got it!',
+      incorrect: 'Sorry, but peach schnapps is the foundation of a good Sex on the Beach.'
+    },
+    {
+      question: 'How does 007 like his vodka martinis?',
+      answers: [
+        'Shaken, not stirred.',
+        'On the rocks.',
+        'Dirty.',
+        'With a twist.'
       ],
       imageAttributes: [
         "images/",
-        "blah"
+        "Shaken, Not Stirred"
       ],
-      correctAnswer: '2019'
-    }
+      correctAnswer: 'Shaken, not stirred.',
+      correct: 'Correct - old fashioned, isn\'t it?',
+      incorrect: 'Nope! He liked them shaken, not stirred.'
+    },
+    {
+      question: 'What famous cocktail has only two ingredients?',
+      answers: [
+        'White Lady.',
+        'Southside.',
+        'Gin and Tonic.',
+        'Americano.'
+      ],
+      imageAttributes: [
+        "images/gin-and-tonic.jpg",
+        "Gin and Tonic"
+      ],
+      correctAnswer: 'Gin and Tonic.',
+      correct: 'Kind of obvious, huh?',
+      incorrect: 'Sorry, but the answer was Gin and Tonic.'
+    },
+    {
+      question: 'What is the key ingredient in a Sex on the Beach?',
+      answers: [
+        'Cherry Grenadine',
+        'Peach Schnapps',
+        'Rum',
+        'Sweet Vermouth'
+      ],
+      imageAttributes: [
+        "images/sex-on-the-beach.jpg",
+        "Sex on the Beach"
+      ],
+      correctAnswer: 'Peach Schnapps',
+      correct: 'You got it!',
+      incorrect: 'Sorry, but peach schnapps is the foundation of a good Sex on the Beach.'
+    },
   ],
   feedback: '',
   quizStarted: false,
