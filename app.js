@@ -112,21 +112,18 @@ const STORE = {
 /********** TEMPLATE GENERATION FUNCTIONS **********/
 
 function generateQuizAppPage(item) {
-  console.log('generateQuizAppPage ran!');
   if (item.quizStarted === false) {
-    console.log('I returned start!')
     return generateStartPage();
-  } else if (item.quizStarted === true && item.questionNumber < item.questions.length+1) {
-    console.log('I returned question!')
-    return generateQuestionPage();
-  } else { 
-    console.log('I returned end!')
-    return generateEndPage();
   }
+    else if (item.quizStarted === true && item.questionNumber < item.questions.length+1) {
+    return generateQuestionPage();
+    }   
+      else { 
+      return generateEndPage();
+      }
 }
 
 function generateStartPage() {
-  console.log('generateStartPage ran!');
   return `
   <div class="wrapper">
   <div class="group">
@@ -143,7 +140,6 @@ function generateStartPage() {
 }
 
 function generateQuestionPage() {
-  console.log('generateQuestionPage ran!')
   return `
   <div class="wrapper">
     <section class="group">
@@ -185,7 +181,6 @@ function generateQuestionPage() {
 
 
 function generateEndPage() {
-  console.log('generateEndPage ran!')
   return `
   <div class="wrapper">
   <section class="group">
@@ -207,7 +202,6 @@ function generateEndPage() {
 // This function conditionally replaces the contents of the <main> tag based on the state of the store
 
 function renderQuizApp() {
-  console.log('renderQuizApp ran!');
   const MAINCONTENT = generateQuizAppPage(STORE); //someFunction stands in for the template generator
   $('main').html(MAINCONTENT);
 }
@@ -217,7 +211,6 @@ function renderQuizApp() {
 // These functions handle events (submit, click, etc)
 
 function goToNextPage() {
-  console.log('goToNextPage ran!');
   $('main').on('click', '.js-next-page', event => {
     STORE.quizStarted = true;
     STORE.questionNumber += 1;
@@ -229,7 +222,6 @@ function goToNextPage() {
 function submitUserAnswer() {
   $('main').on('submit', event => {
     event.preventDefault();
-    console.log('submitAnswer ran!')
     const USERANSWER = $(':checked').val();
     checkUserAnswer(USERANSWER);
     renderQuizApp();
@@ -237,7 +229,6 @@ function submitUserAnswer() {
 }
 
 function checkUserAnswer(userAnswer) {
-  console.log('checkUserAnswer ran!');
   if (userAnswer === STORE.questions[STORE.questionNumber-1].correctAnswer) {
     STORE.score += 1;
     STORE.feedback = STORE.questions[STORE.questionNumber-1].correct;
@@ -249,7 +240,6 @@ function checkUserAnswer(userAnswer) {
 }
 
 function goToNextQuestion() {
-  console.log('goToNextQuestion ran!')
   $('main').on('click', '.js-next-question', event => {
     STORE.feedback = "";
     STORE.questionCompleted = false;
@@ -259,7 +249,6 @@ function goToNextQuestion() {
 }
 
 function resetQuiz() {
-  console.log('goToStartPage ran!')
   $('main').on('click', '.js-restart', event => {
     STORE.feedback = "";
     STORE.questionCompleted = false;
