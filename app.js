@@ -47,7 +47,7 @@ const STORE = {
         'With a twist.'
       ],
       imageAttributes: [
-        "images/",
+        "images/james-bond.jpg",
         "Shaken, Not Stirred"
       ],
       correctAnswer: 'Shaken, not stirred.',
@@ -71,20 +71,20 @@ const STORE = {
       incorrect: 'Sorry, but the answer was Gin and Tonic.'
     },
     {
-      question: 'What is the key ingredient in a Sex on the Beach?',
+      question: 'What cocktail gets Jeff through the rollercoaster storyline of the Big Lebowski?',
       answers: [
-        'Cherry Grenadine',
-        'Peach Schnapps',
-        'Rum',
-        'Sweet Vermouth'
+        'Bull Shot',
+        'Charlie Chaplin',
+        'White Russian',
+        'Long Island Iced Tea'
       ],
       imageAttributes: [
-        "images/sex-on-the-beach.jpg",
-        "Sex on the Beach"
+        "images/big-lebowski-white-russian.jpg",
+        "Big Lebowski"
       ],
-      correctAnswer: 'Peach Schnapps',
-      correct: 'You got it!',
-      incorrect: 'Sorry, but peach schnapps is the foundation of a good Sex on the Beach.'
+      correctAnswer: 'White Russian',
+      correct: 'Definitely!',
+      incorrect: 'Oof, close but no cigar. Jeff lived on White Russians.'
     },
   ],
   feedback: '',
@@ -127,10 +127,10 @@ function generateStartPage() {
   return `
   <div class="wrapper">
   <div class="group">
-    <img class=center src="images/clean-cocktail-lineup.jpg" alt="A colorful row of cocktails.">
+      <img class=center src="images/clean-cocktail-lineup.jpg" alt="A colorful row of cocktails.">
     <div class="item-double padding">
-      <h3 class="center">h3: Welcome</h3>
-      <p>p: Text</p>
+      <h3 class="center">It's Happy Hour!</h3>
+      <p>Test your cocktail trivia knowledge!</p>
     </div>
     <div class="item-double center padding">
       <button class="js-next-page">Next</button>
@@ -184,11 +184,10 @@ function generateEndPage() {
   return `
   <div class="wrapper">
   <section class="group">
-    <h2 class="item-end">h2: Some Text</h2>
-    <p class="item-end">p: Some Text</p>
     <div class="item-double padding">
+      <p class="center"><img src="images/tenor.gif" alt="A very happy lady with cocktails."></p>
       <h3 class="center">You scored ${STORE.score} out of ${STORE.questions.length}!</h3>
-      <p>${STORE.score == STORE.questions.length ? "Nice!" : "Better luck next time!"}</p>
+      <p class="center">${STORE.score == STORE.questions.length ? "Nice!" : "Better luck next time!"}</p>
     </div>
     <div class="center item-double padding">
       <button class="js-restart">Take quiz again!</button>
