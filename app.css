@@ -28,12 +28,12 @@
   text-align: center;
 }
 
-.padding {
-  padding: 10px;
+button {
+  margin: 16px 0;
 }
 
-h1, p {
-  margin: 0;
+.padding {
+  padding: 10px;
 }
 
 @media all and (min-width: 1200px) {
