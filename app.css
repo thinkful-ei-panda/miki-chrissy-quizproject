@@ -14,7 +14,7 @@ body {
   background-image: url(images/cocktail-seamless.jpg);
   background-size: 50%;
   font-family: "Proxima Nova", sans-serif;
-  font-size: 10px;
+  font-size: 16px;
   /* text-align: center; */
   filter: saturate(1.2);
 }
@@ -68,14 +68,14 @@ body {
 h1 {
   color: #ee1600;
   font-family: proxima-nova, sans-serif;
-  font-size: 14px;
+  font-size: 24px;
   font-style: normal;
   font-weight: bolder;
 }
 
 h2 {
   font-weight: bold;
-  font-size: 16px;
+  font-size: 20px;
 }
 
 h1, h2, p {
@@ -123,7 +123,7 @@ img {
 @media all and (min-width: 1200px) {
 
   body {
-    font-size: 16px;
+    font-size: 18px;
   }
   
   .wrapper {
@@ -206,7 +206,7 @@ img {
   h1 {
     align-self: center;
     font-family: proxima-nova, sans-serif;
-    font-size: 24px;
+    font-size: 28px;
     font-style: normal;
     font-weight: bolder;
     color: #ee1600;
@@ -214,7 +214,7 @@ img {
 
   h2 {
     font-weight: bold;
-    font-size: 26px;
+    font-size: 30px;
   }
 
   h1, h2, p {
