@@ -74,10 +74,6 @@ body {
   text-align: center;
 }
 
-.padding {
-  padding: 5px;
-}
-
 .no-margin-top {
   margin-top: 0;
 }
@@ -87,12 +83,11 @@ body {
 }
 
 h1 {
-  align-self: center;
+  color: #ee1600;
   font-family: proxima-nova, sans-serif;
   font-size: 14px;
   font-style: normal;
   font-weight: bolder;
-  color: #ee1600;
 }
 
 h2 {
