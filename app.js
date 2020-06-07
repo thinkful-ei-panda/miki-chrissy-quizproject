@@ -128,7 +128,7 @@ function generateStartPage() {
   <div class="wrapper">
     <div class="group no-margin-top">
       <img src="images/clean-cocktail-lineup.jpg" alt="A Colorful Row of Cocktails">
-      <div class="item-double">
+      <div class="item">
         <h2>It's Happy Hour!</h2>
         <p>Test your cocktail trivia knowledge!</p>
         <button class="js-start start-button">Click this link to start</button>
@@ -155,7 +155,7 @@ function generateQuestionPage() {
   return `
   <div class="wrapper">
     <section class="group no-margin-top">
-      <article class="item-double">
+      <article class="item">
         <h2 class="">Question Number: ${STORE.questionNumber} of 5: ${STORE.questions[STORE.questionNumber-1].question}</h2>
         <p class="">Current Score: ${STORE.score} of 5</p>
         <p class="center"><img src=${STORE.questions[STORE.questionNumber-1].imageAttributes[0]} alt=${STORE.questions[STORE.questionNumber-1].imageAttributes[1]}></p>
@@ -190,7 +190,7 @@ function generateEndPage() {
   return `
   <div class="wrapper">
   <section class="group">
-    <div class="item-double">
+    <div class="item">
       <h2 class="">You scored ${STORE.score} out of ${STORE.questions.length}!</h2>
       <p class="center"><img src="images/tenor.gif" alt="A very happy lady with cocktails."></p>
       <p class="">${STORE.score == STORE.questions.length ? "Great job! Although it's a little suspicious that you got a perfect score." : "Better luck next time!"}</p>

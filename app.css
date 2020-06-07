@@ -46,28 +46,11 @@ body {
 }
 
 .item {
-  flex: 1;
-  /* border: 0.5px solid #000; */
-  border-radius: 0 0 5px 5px;
-  background-color: #FFF;
-  align-items: center;
-}
-
-.item-double {
   flex: 2;
   /* border: 0.5px solid #000; */
   border-radius: 0 0 5px 5px;
   background-color: #FFF;
   margin: 0px;
-}
-
-.item-start {
-  align-self: flex-start;
-}
-
-.item-end {
-  align-self: flex-end;
-  margin: 0 10px 0 0;
 }
 
 .center {
