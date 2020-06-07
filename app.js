@@ -98,11 +98,11 @@ function generateStartPage() {
   return `
   <div class="wrapper">
   <section class="group">
-    <h2 class="item-end">h2: Some Text</h2>
-    <p class="item-end">p: Some Text</p>
+    <h2 class="item-end">h2</h2>
+    <p class="item-end">p</p>
     <div class="item-double padding">
-      <h3 class="center">h3: Welcome</h3>
-      <p>p: Teeeeeeeeeext</p>
+      <h3 class="center">h3</h3>
+      <p>p</p>
     </div>
     <div class="item-double center padding">
       <button class="js-next-page">Next</button>
@@ -113,6 +113,19 @@ function generateStartPage() {
 
 function generateQuestionPage() {
   console.log('generateQuestionPage ran!')
+  if (STORE.questionCompleted) {
+    return `
+    <div class="wrapper">
+      <section class="group">
+        <h2 class="item-end">Question Number: ${STORE.questionNumber} of 5</h2>
+        <p class="item-end">Current Score: ${STORE.score} of 5</p>
+        <div class="center item-double padding">
+          <p class="feedback">${STORE.feedback}</p>
+          ${STORE.questionCompleted ? '<button class="js-next-question">Next question!</button>' : ""}
+        </div>
+      </section>
+    </div>`;
+  }
   return `
   <div class="wrapper">
     <section class="group">
@@ -142,10 +155,6 @@ function generateQuestionPage() {
           </div>
         </form>
       </article>
-      <div class="center item-double padding">
-        <p class="feedback">${STORE.feedback}</p>
-        ${STORE.questionCompleted ? '<button class="js-next-question">Next question!</button>' : ""}
-      </div>
     </section>
   </div>`;
 }
@@ -157,14 +166,14 @@ function generateEndPage() {
   return `
   <div class="wrapper">
   <section class="group">
-    <h2 class="item-end">h2: Some Text</h2>
-    <p class="item-end">p: Some Text</p>
+    <h2 class="item-end">h2</h2>
+    <p class="item-end">p</p>
     <div class="item-double padding">
-      <h3 class="center">h3: Goodbye</h3>
-      <p>p: Thaaaaaaaaaanks</p>
+      <h3 class="center">h3</h3>
+      <p>p</p>
     </div>
-    <div class="center item-double padding">
-      <button class="js-restart">Take quiz again!</button>
+    <div class="item-double center padding">
+      <button class="js-restart">Try again</button>
     </div>
   </section>
 </div>`;
