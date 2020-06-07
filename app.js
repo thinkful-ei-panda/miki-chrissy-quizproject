@@ -88,9 +88,9 @@ const STORE = {
     },
   ],
   feedback: '',
-  quizStarted: false,
   questionCompleted: false,
   questionNumber: 0,
+  quizStarted: false,
   score: 0
 };
 
@@ -112,10 +112,10 @@ const STORE = {
 /********** TEMPLATE GENERATION FUNCTIONS **********/
 
 function generateQuizAppPage(item) {
-  if (item.quizStarted === false) {
+  if (!item.quizStarted) {
     return generateStartPage();
   }
-    else if (item.quizStarted === true && item.questionNumber < item.questions.length+1) {
+    else if (item.quizStarted && item.questionNumber < item.questions.length+1) {
     return generateQuestionPage();
     }   
       else { 
@@ -127,12 +127,11 @@ function generateStartPage() {
   return `
   <div class="wrapper">
     <div class="group no-margin-top">
+      <img src="images/clean-cocktail-lineup.jpg" alt="A Colorful Row of Cocktails">
       <div class="item">
-        <p class="center"><img src="images/clean-cocktail-lineup.jpg" alt="A Colorful Row of Cocktails"></p>
-        <h2 class="center">It's Happy Hour!</h2>
-        <p class="center">Test your cocktail trivia knowledge!</p>
-        <button class="js-start start-button">Start</button>
-      </div>
+        <h2>It's Happy Hour!</h2>
+        <p>Test your cocktail trivia knowledge!</p>
+        <button class="js-start start-button">Click this link to start</button>
     </div>
   </div>`;
 }
@@ -142,8 +141,8 @@ function generateQuestionPage() {
     return `
     <div class="wrapper">
       <section class="group no-margin-top">
-        <article class="item">
-          <h2 class="">Question Number ${STORE.questionNumber} of 5: ${STORE.questions[STORE.questionNumber-1].question}</h2>
+        <article class="item-double">
+          <h2 class="">Question Number: ${STORE.questionNumber} of 5: ${STORE.questions[STORE.questionNumber-1].question}</h2>
           <p class="">Current Score: ${STORE.score} of 5</p>
           <p class="center"><img src=${STORE.questions[STORE.questionNumber-1].imageAttributes[0]} alt=${STORE.questions[STORE.questionNumber-1].imageAttributes[1]}></p>
           <p class="">${STORE.feedback}</p>
@@ -157,7 +156,7 @@ function generateQuestionPage() {
   <div class="wrapper">
     <section class="group no-margin-top">
       <article class="item">
-        <h2 class="">Question Number ${STORE.questionNumber} of 5: ${STORE.questions[STORE.questionNumber-1].question}</h2>
+        <h2 class="">Question Number: ${STORE.questionNumber} of 5: ${STORE.questions[STORE.questionNumber-1].question}</h2>
         <p class="">Current Score: ${STORE.score} of 5</p>
         <p class="center"><img src=${STORE.questions[STORE.questionNumber-1].imageAttributes[0]} alt=${STORE.questions[STORE.questionNumber-1].imageAttributes[1]}></p>
         <form>
@@ -183,7 +182,7 @@ function generateQuestionPage() {
         </form>
       </article>
   </div>`;
-};
+}
 
 
 
@@ -214,7 +213,7 @@ function renderQuizApp() {
 
 // These functions handle events (submit, click, etc)
 
-function goToNextPage() {
+function startQuiz() {
   $('main').on('click', '.js-start', event => {
     STORE.quizStarted = true;
     STORE.questionNumber += 1;
@@ -270,7 +269,7 @@ function resetQuiz() {
 
 function quizAppFunctions() {
   renderQuizApp();
-  goToNextPage();
+  startQuiz();
   submitUserAnswer();
   goToNextQuestion();
   resetQuiz();
