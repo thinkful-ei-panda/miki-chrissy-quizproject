@@ -13,39 +13,44 @@
 body {
   background-image: url(images/cocktail-seamless.jpg);
   background-size: 50%;
+  font-family: "Proxima Nova", sans-serif;
+  font-size: 12px;
   text-align: center;
-  font-family: proxima-nova, sans-serif;
-  font-style: normal;
 }
 
 .wrapper {
   width: 90%;
   margin: auto;
-  border: 0.5px hidden;
 }
 
 .group {
   display: flex;
   flex-direction: column;
-  border: 0.5px hidden;
-  margin: 20px;
+  background-color: #FFF;
+  border: 0.5px solid #000;
+  border-radius: 10px;
+  margin: 10px;
   /* background-color: #f4f4f4; */
 }
 
 .item {
   flex: 1;
-  border: 0.5px solid black;
+  /*
+  border: 0.5px solid #000;
+  */
   border-radius: 10px;
-  background-color: #f4f4f4;
+  background-color: #FFF;
   align-items: center;
 }
 
 .item-double {
   flex: 2;
-  border: 0.5px solid black;
+  /*
+  border: 0.5px solid #000;
+  */
   border-radius: 10px;
-  background-color: #f4f4f4;
-  margin: 20px;
+  background-color: #FFF;
+  margin: 10px;
 }
 
 .item-start {
@@ -65,27 +70,19 @@ body {
   padding: 5px;
 }
 
-.no-margin {
-  margin: 0;
-}
-
-.no-padding-bottom {
-  padding: 10px 10px 2px 10px;
-}
-
 h1 {
   font-family: proxima-nova, sans-serif;
   font-style: normal;
-  font-weight: 800;
+  font-weight: bolder;
   color: #ee1600;
 }
 
-h1, p {
-  margin: 0;
+h1, h3, p {
+  margin: 5px;
 }
 
 button {
-  margin: 15px 0 15px 0;
+  margin: 5px;
 }
 
 [name="answer"] {
@@ -93,21 +90,53 @@ button {
 }
 
 img {
-  margin: auto;
-  height: 100%;
-  width:75%;
   border-radius: 5px;
   border: solid black;
-}
-
-.footer-padding {
-  padding: 10px;
+  height: 100%;
+  margin: auto;
+  margin-top: 20px;
+  width:75%;
+  
 }
 
 @media all and (min-width: 1200px) {
+
+  body {
+    font-size: 24px;
+  }
   
   .wrapper {
     width: 50%;
+  }
+
+  .group {
+    display: flex;
+    flex-direction: column;
+    background-color: #FFF;
+    border: 0.5px solid #000;
+    border-radius: 10px;
+    margin: 20px;
+    /* background-color: #f4f4f4; */
+  }
+
+  .item {
+    flex: 1;
+    /*
+    border: 0.5px solid #000;
+    */
+    border-radius: 10px;
+    background-color: #FFF;
+    align-items: center;
+  }
+  
+  .item-double {
+    flex: 2;
+    /*
+    border: 0.5px solid #000;
+    */
+    border-radius: 10px;
+    background-color: #FFF;
+    margin: 20px;
   }
 
   .padding {
@@ -118,13 +147,13 @@ img {
     padding: 50px 50px 10px 50px;
   }
 
-  img {
-    margin: 0px auto;
-    max-width: 65%;
+  h1, h3, p {
+    margin: 15px;
   }
 
-  .footer-padding {
-    padding: 20px;
+  img {
+    margin: 20px auto 0 auto;
+    max-width: 65%;
   }
 
 }

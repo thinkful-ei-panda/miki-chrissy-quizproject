@@ -88,9 +88,9 @@ const STORE = {
     },
   ],
   feedback: '',
-  quizStarted: false,
   questionCompleted: false,
   questionNumber: 0,
+  quizStarted: false,
   score: 0
 };
 
@@ -112,10 +112,10 @@ const STORE = {
 /********** TEMPLATE GENERATION FUNCTIONS **********/
 
 function generateQuizAppPage(item) {
-  if (item.quizStarted === false) {
+  if (!item.quizStarted) {
     return generateStartPage();
   }
-    else if (item.quizStarted === true && item.questionNumber < item.questions.length+1) {
+    else if (item.quizStarted && item.questionNumber < item.questions.length+1) {
     return generateQuestionPage();
     }   
       else { 
@@ -126,20 +126,35 @@ function generateQuizAppPage(item) {
 function generateStartPage() {
   return `
   <div class="wrapper">
-  <div class="group">
-      <img class=center src="images/clean-cocktail-lineup.jpg" alt="A colorful row of cocktails.">
-    <div class="item-double padding">
-      <h3 class="center">It's Happy Hour!</h3>
-      <p>Test your cocktail trivia knowledge!</p>
+    <div class="group">
+      <img class=center src="images/clean-cocktail-lineup.jpg" alt="A Colorful Row of Cocktails">
+      <div class="item-double">
+        <h3>It's Happy Hour!</h3>
+        <p>Test your cocktail trivia knowledge!</p>
+        <button class="js-next-page">Start the quiz!</button>
     </div>
-    <div class="item-double center padding">
-      <button class="js-next-page">Next</button>
-    </div>
-  </div>
-</div>`;
+  </div>`;
 }
 
 function generateQuestionPage() {
+  if (STORE.questionCompleted) {
+    return `
+    <div class="wrapper">
+      <section class="group">
+        <h2 class="item-end">Question Number: ${STORE.questionNumber} of 5</h2>
+        <p class="item-end">Current Score: ${STORE.score} of 5</p>
+        <article class="item-double">
+          <p class="center"><img src=${STORE.questions[STORE.questionNumber-1].imageAttributes[0]} alt=${STORE.questions[STORE.questionNumber-1].imageAttributes[1]}></p>
+          <h3 class="center">${STORE.questions[STORE.questionNumber-1].question}</h3>
+          <div class="center item-double padding">
+            <p class="feedback">${STORE.feedback}</p>
+            <button class="js-next-question">Next question!</button>
+          </div>
+        </article>
+      </section>
+    </div>`;
+  }
+
   return `
   <div class="wrapper">
     <section class="group">
@@ -170,11 +185,6 @@ function generateQuestionPage() {
           </div>
         </form>
       </article>
-      <div class="center item-double padding">
-        <p class="feedback">${STORE.feedback}</p>
-        ${STORE.questionCompleted ? '<button class="js-next-question">Next question!</button>' : ""}
-      </div>
-    </section>
   </div>`;
 }
 
@@ -188,8 +198,6 @@ function generateEndPage() {
       <p class="center"><img src="images/tenor.gif" alt="A very happy lady with cocktails."></p>
       <h3 class="center">You scored ${STORE.score} out of ${STORE.questions.length}!</h3>
       <p class="center">${STORE.score == STORE.questions.length ? "Nice!" : "Better luck next time!"}</p>
-    </div>
-    <div class="center item-double padding">
       <button class="js-restart">Take quiz again!</button>
     </div>
   </section>
