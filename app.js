@@ -126,7 +126,7 @@ function generateQuizAppPage(item) {
 function generateStartPage() {
   return `
   <div class="wrapper">
-    <div class="group">
+    <div class="group no-margin-top">
       <img src="images/clean-cocktail-lineup.jpg" alt="A Colorful Row of Cocktails">
       <div class="item-double">
         <h2>It's Happy Hour!</h2>
@@ -140,7 +140,7 @@ function generateQuestionPage() {
   if (STORE.questionCompleted) {
     return `
     <div class="wrapper">
-      <section class="group">
+      <section class="group no-margin-top">
         <article class="item-double">
           <h2 class="">Question Number: ${STORE.questionNumber} of 5: ${STORE.questions[STORE.questionNumber-1].question}</h2>
           <p class="">Current Score: ${STORE.score} of 5</p>
@@ -154,7 +154,7 @@ function generateQuestionPage() {
 
   return `
   <div class="wrapper">
-    <section class="group">
+    <section class="group no-margin-top">
       <article class="item-double">
         <h2 class="">Question Number: ${STORE.questionNumber} of 5: ${STORE.questions[STORE.questionNumber-1].question}</h2>
         <p class="">Current Score: ${STORE.score} of 5</p>
