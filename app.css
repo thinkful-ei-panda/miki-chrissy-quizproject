@@ -14,38 +14,29 @@ body {
   background-image: url(images/cocktail-seamless.jpg);
   background-size: 50%;
   text-align: center;
-  font-family: proxima-nova, sans-serif;
+  font-family: "Proxima Nova", sans-serif;
   font-style: normal;
 }
 
 .wrapper {
   width: 90%;
   margin: auto;
-  border: 0.5px hidden;
 }
 
 .group {
   display: flex;
   flex-direction: column;
-  border: 0.5px hidden;
+  background-color: #f4f4f4;
+  border: 0.5px solid black;
+  border-radius: 10px;
   margin: 20px;
   /* background-color: #f4f4f4; */
 }
 
 .item {
   flex: 1;
-  border: 0.5px solid black;
   border-radius: 10px;
   background-color: #f4f4f4;
-  align-items: center;
-}
-
-.item-double {
-  flex: 2;
-  border: 0.5px solid black;
-  border-radius: 10px;
-  background-color: #f4f4f4;
-  margin: 20px;
 }
 
 .item-start {
@@ -54,15 +45,10 @@ body {
 
 .item-end {
   align-self: flex-end;
-  margin: 0 10px 0 0;
 }
 
 .center {
   text-align: center;
-}
-
-.padding {
-  padding: 5px;
 }
 
 .no-margin {
@@ -74,14 +60,11 @@ body {
 }
 
 h1 {
-  font-family: proxima-nova, sans-serif;
-  font-style: normal;
+  font-family: "Proxima Nova", sans-serif;
+  font-size: 20px;
   font-weight: 800;
   color: #ee1600;
-}
-
-h1, p {
-  margin: 0;
+  margin: 10px 0 10px 0;
 }
 
 button {
@@ -93,15 +76,11 @@ button {
 }
 
 img {
-  margin: auto;
-  height: 100%;
   width:75%;
   border-radius: 5px;
-  border: solid black;
-}
-
-.footer-padding {
-  padding: 10px;
+  border: 0.5px solid black;
+  margin: auto;
+  margin-top: 20px;
 }
 
 @media all and (min-width: 1200px) {
@@ -110,21 +89,18 @@ img {
     width: 50%;
   }
 
-  .padding {
-    padding: 10px 50px 10px 50px;
-  }
-
-  .no-padding-bottom {
-    padding: 50px 50px 10px 50px;
+  h1 {
+    font-family: "Proxima Nova", sans-serif;
+    font-size: 32px;
+    font-weight: 800;
+    color: #ee1600;
+    margin: 10px 0 10px 0;
   }
 
   img {
     margin: 0px auto;
-    max-width: 65%;
-  }
-
-  .footer-padding {
-    padding: 20px;
+    margin-top: 10px;
+    max-width: 50%;
   }
 
 }

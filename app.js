@@ -126,57 +126,64 @@ function generateQuizAppPage(item) {
 function generateStartPage() {
   return `
   <div class="wrapper">
-  <div class="group">
-      <img class=center src="images/clean-cocktail-lineup.jpg" alt="A colorful row of cocktails.">
-    <div class="item-double padding">
-      <h3 class="center">It's Happy Hour!</h3>
-      <p>Test your cocktail trivia knowledge!</p>
+    <div class="group no-margin-top">
+      <div class="item">
+        <p class="center"><img src="images/clean-cocktail-lineup.jpg" alt="A Colorful Row of Cocktails"></p>
+        <h2 class="center">It's Happy Hour!</h2>
+        <p class="center">Test your cocktail trivia knowledge!</p>
+        <button class="js-start start-button">Start</button>
+      </div>
     </div>
-    <div class="item-double center padding">
-      <button class="js-next-page">Next</button>
-    </div>
-  </div>
-</div>`;
+  </div>`;
 }
 
 function generateQuestionPage() {
+  if (STORE.questionCompleted) {
+    return `
+    <div class="wrapper">
+      <section class="group no-margin-top">
+        <article class="item">
+          <h2 class="">Question Number ${STORE.questionNumber} of 5: ${STORE.questions[STORE.questionNumber-1].question}</h2>
+          <p class="">Current Score: ${STORE.score} of 5</p>
+          <p class="center"><img src=${STORE.questions[STORE.questionNumber-1].imageAttributes[0]} alt=${STORE.questions[STORE.questionNumber-1].imageAttributes[1]}></p>
+          <p class="">${STORE.feedback}</p>
+          <button class="js-next-question">Next question!</button>
+        </article>
+      </section>
+    </div>`;
+  }
+
   return `
   <div class="wrapper">
-    <section class="group">
-      <h2 class="item-end">Question Number: ${STORE.questionNumber} of 5</h2>
-      <p class="item-end">Current Score: ${STORE.score} of 5</p>
-      <article class="item-double">
+    <section class="group no-margin-top">
+      <article class="item">
+        <h2 class="">Question Number ${STORE.questionNumber} of 5: ${STORE.questions[STORE.questionNumber-1].question}</h2>
+        <p class="">Current Score: ${STORE.score} of 5</p>
         <p class="center"><img src=${STORE.questions[STORE.questionNumber-1].imageAttributes[0]} alt=${STORE.questions[STORE.questionNumber-1].imageAttributes[1]}></p>
-        <h3 class="center">${STORE.questions[STORE.questionNumber-1].question}</h3>
-        <form class="padding item-start">
-          <div>
+        <form>
+          <div class="radio-button">
             <input type="radio" id="1" name="answer" value="${STORE.questions[STORE.questionNumber-1].answers[0]}" required>
             <label for="1">${STORE.questions[STORE.questionNumber-1].answers[0]}</label>
           </div>
-          <div>
+          <div class="radio-button">
             <input type="radio" id="2" name="answer" value="${STORE.questions[STORE.questionNumber-1].answers[1]}">
             <label for="2">${STORE.questions[STORE.questionNumber-1].answers[1]}</label>
-            </div>
-          <div>
+          </div>
+          <div class="radio-button">
             <input type="radio" id="3" name="answer" value="${STORE.questions[STORE.questionNumber-1].answers[2]}">
             <label for="3">${STORE.questions[STORE.questionNumber-1].answers[2]}</label>
           </div>
-          <div>
+          <div class="radio-button">
             <input type="radio" id="4" name="answer" value="${STORE.questions[STORE.questionNumber-1].answers[3]}">
             <label for="4">${STORE.questions[STORE.questionNumber-1].answers[3]}</label>
           </div>
           <div>
-            ${STORE.questionCompleted ? "" : '<button type="submit">Check your answer!</button>'}
+          ${STORE.questionCompleted ? "" : '<button type="submit">Check your answer!</button>'}
           </div>
         </form>
       </article>
-      <div class="center item-double padding">
-        <p class="feedback">${STORE.feedback}</p>
-        ${STORE.questionCompleted ? '<button class="js-next-question">Next question!</button>' : ""}
-      </div>
-    </section>
   </div>`;
-}
+};
 
 
 
@@ -184,13 +191,11 @@ function generateEndPage() {
   return `
   <div class="wrapper">
   <section class="group">
-    <div class="item-double padding">
+    <div class="item">
+      <h2 class="">You scored ${STORE.score} out of ${STORE.questions.length}!</h2>
       <p class="center"><img src="images/tenor.gif" alt="A very happy lady with cocktails."></p>
-      <h3 class="center">You scored ${STORE.score} out of ${STORE.questions.length}!</h3>
-      <p class="center">${STORE.score == STORE.questions.length ? "Nice!" : "Better luck next time!"}</p>
-    </div>
-    <div class="center item-double padding">
-      <button class="js-restart">Take quiz again!</button>
+      <p class="">${STORE.score == STORE.questions.length ? "Great job! Although it's a little suspicious that you got a perfect score." : "Better luck next time!"}</p>
+      <button class="js-restart start-button">Click to restart</button>
     </div>
   </section>
 </div>`;
@@ -210,7 +215,7 @@ function renderQuizApp() {
 // These functions handle events (submit, click, etc)
 
 function goToNextPage() {
-  $('main').on('click', '.js-next-page', event => {
+  $('main').on('click', '.js-start', event => {
     STORE.quizStarted = true;
     STORE.questionNumber += 1;
     STORE.previousScore = STORE.currentScore;
