@@ -191,7 +191,7 @@ function generateEndPage() {
     <div class="item">
       <h2 class="">You scored ${STORE.score} out of ${STORE.questions.length}!</h2>
       <p class="center"><img src="images/tenor.gif" alt="A very happy lady with cocktails."></p>
-      <p class="">${STORE.score == STORE.questions.length ? "Great job! Although it's a little suspicious that you got a perfect score." : "Better luck next time!"}</p>
+      <p class="">${STORE.score == STORE.questions.length ? "Great job! Although it's a little suspicious that you got a perfect score." : "Better luck next time! Brush up on your knowledge base, although you may never need them."}</p>
       <button class="js-restart start-button">Click to restart</button>
     </div>
   </section>
