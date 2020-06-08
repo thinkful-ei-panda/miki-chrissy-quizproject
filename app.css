@@ -120,14 +120,10 @@ img {
   width:20%;
 }
 
-@media all and (min-width: 1200px) {
+@media all and (min-width: 600px) {
 
   body {
     font-size: 18px;
-  }
-  
-  .wrapper {
-    width: 50%;
   }
 
   .group {
@@ -193,16 +189,6 @@ img {
     margin-bottom: 0;
   }
 
-  /*
-  .padding {
-    padding: 10px 50px 10px 50px;
-  }
-
-  .no-padding-bottom {
-    padding: 50px 50px 10px 50px;
-  }
-  */
-
   h1 {
     align-self: center;
     font-family: proxima-nova, sans-serif;
@@ -258,5 +244,17 @@ img {
     width: 15%;
   }
 
+
+}
+
+@media all and (min-width: 1200px) {
+
+  body {
+    font-size: 18px;
+  }
+  
+  .wrapper {
+    width: 50%;
+  }
 
 }

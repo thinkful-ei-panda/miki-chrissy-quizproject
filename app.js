@@ -16,7 +16,7 @@ const STORE = {
       ],
       imageAttributes: [
         "images/archer_bloody_mary.jpg",
-        "Archer's Bloody Mary'"
+        "Archer with his Bloody Mary'"
       ],
       correctAnswer: 'Bloody Mary',
       correct: 'Yup, and the cumulative hangover will kill him.',
@@ -32,7 +32,7 @@ const STORE = {
       ],
       imageAttributes: [
         "images/sex-on-the-beach.jpg",
-        "Sex on the Beach"
+        "Sex on the Beach cocktail by the beach"
       ],
       correctAnswer: 'Peach Schnapps',
       correct: 'You got it!',
@@ -48,7 +48,7 @@ const STORE = {
       ],
       imageAttributes: [
         "images/james-bond.jpg",
-        "Shaken, Not Stirred"
+        "A suit-wearing 007 with a martini"
       ],
       correctAnswer: 'Shaken, not stirred.',
       correct: 'Correct - old fashioned, isn\'t it?',
@@ -64,7 +64,7 @@ const STORE = {
       ],
       imageAttributes: [
         "images/gin-and-tonic.jpg",
-        "Gin and Tonic"
+        "A gin and tonic up with lemon twist"
       ],
       correctAnswer: 'Gin and Tonic.',
       correct: 'Kind of obvious, huh?',
@@ -80,7 +80,7 @@ const STORE = {
       ],
       imageAttributes: [
         "images/big-lebowski-white-russian.jpg",
-        "Big Lebowski"
+        "Big Lebowski at the bar with a friend"
       ],
       correctAnswer: 'White Russian',
       correct: 'Definitely!',
