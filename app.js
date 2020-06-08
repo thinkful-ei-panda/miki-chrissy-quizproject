@@ -141,7 +141,7 @@ function generateQuestionPage() {
     return `
     <div class="wrapper">
       <section class="group no-margin-top">
-        <article class="item-double">
+        <article class="item">
           <h2 class="">Question Number: ${STORE.questionNumber} of 5: ${STORE.questions[STORE.questionNumber-1].question}</h2>
           <p class="">Current Score: ${STORE.score} of 5</p>
           <p class="center"><img src=${STORE.questions[STORE.questionNumber-1].imageAttributes[0]} alt=${STORE.questions[STORE.questionNumber-1].imageAttributes[1]}></p>
@@ -183,8 +183,6 @@ function generateQuestionPage() {
       </article>
   </div>`;
 }
-
-
 
 function generateEndPage() {
   return `
